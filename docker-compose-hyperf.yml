@@ -1,0 +1,95 @@
+version: "3"
+services:
+  soke-bolao:
+    build:
+      context: ./services/soke-bolao
+    container_name: soke-bolao
+    ports:
+      - 9502:9502
+      - 9512:9512
+    expose:
+      - 9502
+    extra_hosts:
+      - "www.site1.com:172.17.0.1"
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${PHP74_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
+  soke-opendev:
+    build:
+      context: ./services/soke-opendev
+    container_name: soke-opendev
+    ports:
+      - 9501:9501
+    expose:
+      - 9501
+    extra_hosts:
+      - "www.site1.com:172.17.0.1"
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${PHP74_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
+  soke-xique:
+    build:
+      context: ./services/soke-xique
+    container_name: soke-xique
+    ports:
+      - 9503:9503
+    expose:
+      - 9503
+    extra_hosts:
+      - "www.site1.com:172.17.0.1"
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${PHP74_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
+  soke-xingshui:
+    build:
+      context: ./services/soke-xingshui
+    container_name: soke-xingshui
+    ports:
+      - 9504:9504
+    expose:
+      - 9504
+    extra_hosts:
+      - "www.site1.com:172.17.0.1"
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${PHP74_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
+  soke-exam:
+    build:
+      context: ./services/soke-exam
+    container_name: soke-exam
+    ports:
+      - 9505:9505
+    expose:
+      - 9505
+    extra_hosts:
+      - "www.site1.com:172.17.0.1"
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${PHP74_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
+networks:
+  default:
